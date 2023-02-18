@@ -414,10 +414,6 @@ bool VanitySearch::initPrefix(std::string &prefix,PREFIX_ITEM *it) {
     uint8_t data[64];
     memset(data,0,64);
     size_t data_length;
-    if(!bech32_decode_nocheck(data,&data_length,prefix.c_str()+4)) {
-      printf("Ignoring prefix \"%s\" (Only \"023456789acdefghjklmnpqrstuvwxyz\" allowed)\n", prefix.c_str());
-      return false;
-    }
 
     // Difficulty
     it->sPrefix = *(prefix_t *)data;
