@@ -178,11 +178,9 @@ static int convert_bits(uint8_t* out, size_t* outlen, int outbits, const uint8_t
 int segwit_addr_encode(char *output, const char *hrp, int witver, const uint8_t *witprog, size_t witprog_len) {
     uint8_t data[65];
     size_t datalen = 0;
-    bech32_encoding enc = BECH32_ENCODING_BECH32;
+    bech32_encoding enc = BECH32_ENCODING_BECH32M;
     if (witver > 16) return 0;
-    if (witver == 0 && witprog_len != 20 && witprog_len != 32) return 0;
     if (witprog_len < 2 || witprog_len > 40) return 0;
-    if (witver == 0) enc = BECH32_ENCODING_BECH32M;
     data[0] = witver;
     convert_bits(data + 1, &datalen, 5, witprog, witprog_len, 8, 1);
     ++datalen;
