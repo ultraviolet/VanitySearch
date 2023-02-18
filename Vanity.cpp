@@ -360,7 +360,7 @@ bool VanitySearch::initPrefix(std::string &prefix,PREFIX_ITEM *it) {
   case 'b':
   case 'B':
     std::transform(prefix.begin(), prefix.end(), prefix.begin(), ::tolower);
-    if(strncmp(prefix.c_str(), "bc1q", 4) == 0)
+    if(strncmp(prefix.c_str(), "bc1p", 4) == 0)
       aType = BECH32;
     break;
   }
