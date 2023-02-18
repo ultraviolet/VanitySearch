@@ -173,7 +173,7 @@ int bech32_decode(char* hrp, uint8_t *data, size_t *data_len, const char *input)
   if (have_lower && have_upper) {
     return 0;
   }
-  return (chk == 0x2bc830a3) ? 0x2bc830a3 : 0;
+  return chk == 0x2bc830a3;
 }
 
 static int convert_bits(uint8_t* out, size_t* outlen, int outbits, const uint8_t* in, size_t inlen, int inbits, int pad) {
