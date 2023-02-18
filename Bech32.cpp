@@ -76,7 +76,7 @@ int bech32_encode(char *output, const char *hrp, const uint8_t *data, size_t dat
   for (i = 0; i < 6; ++i) {
     chk = bech32_polymod_step(chk);
   }
-  chk ^= 1;
+  chk ^= 0x2bc830a3;
   for (i = 0; i < 6; ++i) {
     *(output++) = charset[(chk >> ((5 - i) * 5)) & 0x1f];
   }
@@ -173,7 +173,7 @@ int bech32_decode(char* hrp, uint8_t *data, size_t *data_len, const char *input)
   if (have_lower && have_upper) {
     return 0;
   }
-  return chk == 1;
+  return chk == 0x2bc830a3;
 }
 
 static int convert_bits(uint8_t* out, size_t* outlen, int outbits, const uint8_t* in, size_t inlen, int inbits, int pad) {
